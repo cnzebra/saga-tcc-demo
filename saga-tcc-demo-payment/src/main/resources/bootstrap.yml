@@ -1,0 +1,16 @@
+---
+server:
+  port: 9300
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 30
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+        defaultZone: http://172.168.4.188:9010/eureka/
+  server:
+    enable-self-preservation: false
