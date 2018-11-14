@@ -17,16 +17,21 @@
 
 package com.loessland.saga.demo.inventory;
 
+import com.loessland.saga.demo.inventory.model.Product;
+import com.loessland.saga.demo.inventory.model.ProductDao;
 import org.apache.servicecomb.saga.omega.spring.EnableOmega;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@EnableEurekaClient
 @EnableOmega
+@MapperScan("com.loessland.saga.demo.inventory")
 public class TccInventoryApplication {
-
   public static void main(String[] args) {
     SpringApplication.run(TccInventoryApplication.class, args);
   }

@@ -17,14 +17,17 @@
 
 package com.loessland.saga.demo.payment;
 
+import com.loessland.saga.demo.payment.model.Account;
+import com.loessland.saga.demo.payment.model.AccountDao;
 import org.apache.servicecomb.saga.omega.spring.EnableOmega;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
+@EnableEurekaClient
 @SpringBootApplication
-//@Profile("prd")
 @EnableOmega
 public class TccPaymentApplication {
   public static void main(String[] args) {

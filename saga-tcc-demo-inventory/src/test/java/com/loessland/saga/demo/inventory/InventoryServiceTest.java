@@ -21,6 +21,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
+import com.loessland.saga.demo.inventory.model.Product;
+import com.loessland.saga.demo.inventory.model.ProductDao;
+import com.loessland.saga.demo.inventory.model.ProductOrder;
+import com.loessland.saga.demo.inventory.service.InventoryService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,6 +39,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ActiveProfiles("test")
 @SpringBootTest(classes = {TestApplication.class})
 public class InventoryServiceTest {
+
   @Autowired
   private InventoryService inventoryService;
 

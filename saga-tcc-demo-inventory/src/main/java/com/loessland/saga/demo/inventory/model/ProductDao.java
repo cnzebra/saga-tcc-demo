@@ -14,13 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.loessland.saga.demo.payment;
+package com.loessland.saga.demo.inventory.model;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface AccountDao extends JpaRepository<Account, Long> {
+public interface ProductDao extends JpaRepository<Product, Long> {
 
-  @Query("select a from Account a where a.userName =?1 ")
-  Account findByUserName(String userName);
+  @Query("select p from Product p where p.name =?1 ")
+  Product findProduceByName(String ProductName);
+
 }

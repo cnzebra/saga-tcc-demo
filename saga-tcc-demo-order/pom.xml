@@ -11,11 +11,6 @@
 
     <artifactId>saga-tcc-demo-order</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.0.9.RELEASE</version>
-        </dependency>
     </dependencies>
 
 

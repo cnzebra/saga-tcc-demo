@@ -14,12 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.loessland.saga.demo.inventory;
+package com.loessland.saga.demo.payment.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.loessland.saga.demo.payment.model.Payment;
+import com.loessland.saga.demo.payment.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,38 +31,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class ProductController {
+public class PaymentController {
   @Autowired
-  private InventoryService inventoryService;
+  private PaymentService paymentService;
 
   private final AtomicInteger id = new AtomicInteger(0);
 
-  @PostMapping("/order/{userName}/{productName}/{units}")
+  @PostMapping("/pay/{userName}/{amount}")
   @ResponseBody
-  public ProductOrder updateInventory(@PathVariable String userName,
-      @PathVariable String productName, @PathVariable Integer units) {
-    ProductOrder order = new ProductOrder();
-    order.setId(id.incrementAndGet());
-    order.setUserName(userName);
-    order.setProductName(productName);
-    order.setUnits(units);
-    inventoryService.reserve(order);
-    return order;
+  public Payment pay(@PathVariable String userName,
+                     @PathVariable Integer amount) {
+    Payment payment = new Payment();
+    payment.setId(id.incrementAndGet());
+    payment.setUserName(userName);
+    payment.setAmount(amount);
+    paymentService.pay(payment);
+    return payment;
+  }
+  
+  @GetMapping("/transactions")
+  @ResponseBody
+  List<Payment> getAll() {
+    return new ArrayList<>(paymentService.getAllTransactions());
   }
 
-  @GetMapping("/orderings")
-  @ResponseBody
-  List<ProductOrder> getAll() {
-    return new ArrayList<>(inventoryService.getAllOrders());
-  }
-
-  @DeleteMapping("/orderings")
+  @DeleteMapping("/transactions")
   @ResponseBody
   String clear() {
-    inventoryService.clearAllOrders();
+    paymentService.clearAllTransactions();
     id.set(0);
     return "OK";
   }
 
 }
-

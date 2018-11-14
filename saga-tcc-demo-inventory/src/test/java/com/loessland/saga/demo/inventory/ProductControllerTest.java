@@ -26,6 +26,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.loessland.saga.demo.inventory.controller.ProductController;
+import com.loessland.saga.demo.inventory.model.ProductOrder;
+import com.loessland.saga.demo.inventory.service.InventoryService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

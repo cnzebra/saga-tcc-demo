@@ -15,22 +15,29 @@
  * limitations under the License.
  */
 
-package com.loessland.saga.demo.inventory;
+package com.loessland.saga.demo.payment.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
-public class ProductOrder {
+public class Payment {
   @JsonIgnore
   private Integer id;
   private String userName;
-  private String productName;
-  private Integer units;
+  private Integer amount;
+  private Integer balance;
   private boolean confirmed;
   private boolean cancelled;
 
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
   public String getUserName() {
     return userName;
@@ -40,28 +47,24 @@ public class ProductOrder {
     this.userName = userName;
   }
 
-  public String getProductName() {
-    return productName;
+  public Integer getAmount() {
+    return amount;
   }
 
-  public void setProductName(String productName) {
-    this.productName = productName;
+  public void setAmount(Integer amount) {
+    this.amount = amount;
   }
 
-  public Integer getUnits() {
-    return units;
+  public Integer getBalance() {
+    return balance;
   }
 
-  public void setUnits(Integer units) {
-    this.units = units;
+  public void setBalance(Integer balance) {
+    this.balance = balance;
   }
 
   public boolean isConfirmed() {
     return confirmed;
-  }
-
-  public void setConfirmed(boolean confirmed) {
-    this.confirmed = confirmed;
   }
 
   public boolean isCancelled() {
@@ -72,11 +75,7 @@ public class ProductOrder {
     this.cancelled = cancelled;
   }
 
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
+  public void setConfirmed(boolean confirmed) {
+    this.confirmed = confirmed;
   }
 }

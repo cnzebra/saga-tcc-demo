@@ -14,13 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.loessland.saga.demo.payment;
+package com.loessland.saga.demo.payment.service;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.loessland.saga.demo.payment.model.Account;
+import com.loessland.saga.demo.payment.model.AccountDao;
+import com.loessland.saga.demo.payment.model.Payment;
 import org.apache.servicecomb.saga.omega.transaction.annotations.Participate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

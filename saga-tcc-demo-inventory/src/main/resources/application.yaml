@@ -15,18 +15,19 @@
 ## limitations under the License.
 ## ---------------------------------------------------------------------------
 spring:
+  cloud:
+    refresh:
+      refreshable: none
   application:
     name: inventory
   datasource:
-    url: jdbc:mysql://khtestuser:khtestdb_1022@139.159.144.194:3306/saga-inventory-test?useSSL=false&serverTimezone=GMT&allowMultiQueries=true&characterEncoding=UTF-8
-    #url: jdbc:h2:mem:inventory
-  #h2:
-  #  console:
-   #   enabled: true
+    url: jdbc:mysql://139.159.144.194:3306/saga-inventory-demo?characterEncoding=UTF-8
+    username: khtestuser
+    password: khtestdb_1022
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
       show-sql: true
       generate-ddl: true
-
 alpha:
   cluster:
-    address: 127.0.0.1:8080
+    address: 172.168.4.188:8080

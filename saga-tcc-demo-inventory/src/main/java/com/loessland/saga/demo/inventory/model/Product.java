@@ -14,68 +14,64 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.loessland.saga.demo.inventory.model;
 
-package com.loessland.saga.demo.payment;
-
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
+
 
 @Entity
-@Table(name = "t_account")
-public class Account {
+@Table(name = "t_product")
+public class Product implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+  private Integer id;
 
-  private String userName;
+  private String name;
 
-  private Integer balance;
+  /**
+   * Total count in stock
+   */
+  private Integer inStock;
 
-  private Integer credit;
+  @Version
+  private Integer version;
 
-  public Account() {
-    
+  public Product() {
   }
 
-  public Account(String userName, Integer balance, Integer credit) {
-    this.userName = userName;
-    this.balance = balance;
-    this.credit = credit;
+  public Product(String name, Integer inStock) {
+    this.name = name;
+    this.inStock = inStock;
   }
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
-  public String getUserName() {
-    return userName;
+  public String getName() {
+    return name;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public Integer getBalance() {
-    return balance;
+  public Integer getInStock() {
+    return inStock;
   }
 
-  public void setBalance(Integer balance) {
-    this.balance = balance;
-  }
-
-  public void setCredit(Integer credit) {
-    this.credit = credit;
-  }
-
-  public Integer getCredit() {
-    return credit;
+  public void setInStock(Integer inStock) {
+    this.inStock = inStock;
   }
 }

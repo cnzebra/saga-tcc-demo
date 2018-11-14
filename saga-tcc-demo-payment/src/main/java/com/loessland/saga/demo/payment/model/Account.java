@@ -15,27 +15,43 @@
  * limitations under the License.
  */
 
-package com.loessland.saga.demo.payment;
+package com.loessland.saga.demo.payment.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@JsonAutoDetect(fieldVisibility = Visibility.ANY)
-public class Payment {
-  @JsonIgnore
-  private Integer id;
+@Entity
+@Table(name = "t_account")
+public class Account {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
+
   private String userName;
-  private Integer amount;
-  private Integer balance;
-  private boolean confirmed;
-  private boolean cancelled;
 
-  public Integer getId() {
+  private Integer balance;
+
+  private Integer credit;
+
+  public Account() {
+    
+  }
+
+  public Account(String userName, Integer balance, Integer credit) {
+    this.userName = userName;
+    this.balance = balance;
+    this.credit = credit;
+  }
+
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -47,14 +63,6 @@ public class Payment {
     this.userName = userName;
   }
 
-  public Integer getAmount() {
-    return amount;
-  }
-
-  public void setAmount(Integer amount) {
-    this.amount = amount;
-  }
-
   public Integer getBalance() {
     return balance;
   }
@@ -63,19 +71,11 @@ public class Payment {
     this.balance = balance;
   }
 
-  public boolean isConfirmed() {
-    return confirmed;
+  public void setCredit(Integer credit) {
+    this.credit = credit;
   }
 
-  public boolean isCancelled() {
-    return cancelled;
-  }
-
-  public void setCancelled(boolean cancelled) {
-    this.cancelled = cancelled;
-  }
-
-  public void setConfirmed(boolean confirmed) {
-    this.confirmed = confirmed;
+  public Integer getCredit() {
+    return credit;
   }
 }

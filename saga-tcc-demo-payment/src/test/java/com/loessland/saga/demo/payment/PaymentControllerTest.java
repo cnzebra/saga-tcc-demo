@@ -26,7 +26,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.aspectj.lang.annotation.Before;
+import com.loessland.saga.demo.payment.controller.PaymentController;
+import com.loessland.saga.demo.payment.model.Payment;
+import com.loessland.saga.demo.payment.service.PaymentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +49,7 @@ public class PaymentControllerTest {
   @MockBean
   private PaymentService paymentService;
 
-  @Before
+  //@Before
   public void setUp() {
     when(paymentService.getAllTransactions()).thenReturn(singletonList(somePayment));
   }

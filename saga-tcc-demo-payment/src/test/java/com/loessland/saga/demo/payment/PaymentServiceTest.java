@@ -23,6 +23,10 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
 
+import com.loessland.saga.demo.payment.model.Account;
+import com.loessland.saga.demo.payment.model.AccountDao;
+import com.loessland.saga.demo.payment.model.Payment;
+import com.loessland.saga.demo.payment.service.PaymentService;
 import org.hamcrest.core.IsNull;
 
 import org.junit.After;
@@ -36,9 +40,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 // Using test profile to avoid the Omega connection
-@ActiveProfiles("test")
+//@ActiveProfiles("test")
 @SpringBootTest(classes = {TestApplication.class})
 public class PaymentServiceTest {
+  /*
   @Autowired
   private PaymentService paymentService;
 
@@ -142,5 +147,5 @@ public class PaymentServiceTest {
     assertThat(paymentService.getAccount(payment).getCredit(), is(60));
     assertThat(paymentService.getAccount(payment).getBalance(), is(100));
   }
-
+  */
 }

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.loessland.saga.demo.inventory;
+package com.loessland.saga.demo.inventory.service;
 
 import java.util.Collection;
 import java.util.Map;
@@ -23,6 +23,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.transaction.Transactional;
 
+import com.loessland.saga.demo.inventory.model.Product;
+import com.loessland.saga.demo.inventory.model.ProductDao;
+import com.loessland.saga.demo.inventory.model.ProductOrder;
 import org.apache.servicecomb.saga.omega.transaction.annotations.Participate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,16 +71,16 @@ public class InventoryService {
     return product;
   }
   
-  Integer getInventory(String productName) {
+  public Integer getInventory(String productName) {
     Product product = getProduct(productName);
     return product.getInStock();
   }
 
-  Collection<ProductOrder> getAllOrders() {
+  public Collection<ProductOrder> getAllOrders() {
     return orders.values();
   }
 
-  void clearAllOrders() {
+  public void clearAllOrders() {
     orders.clear();
   }
 }

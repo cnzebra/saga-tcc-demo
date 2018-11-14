@@ -15,23 +15,18 @@
 ## limitations under the License.
 ## ---------------------------------------------------------------------------
 spring:
+  cloud:
+    refresh:
+      refreshable: none
   application:
     name: ordering
   datasource:
-    url: jdbc:mysql://khtestuser:khtestdb_1022@139.159.144.194:3306/saga-ordering-test?useSSL=false&serverTimezone=GMT&allowMultiQueries=true&characterEncoding=UTF-8
-    # url: jdbc:h2:mem:ordering-test
-  #h2:
-   # console:
-    #  enabled: true
+    url: jdbc:mysql://139.159.144.194:3306/saga-order-demo?characterEncoding=UTF-8
+    username: khtestuser
+    password: khtestdb_1022
   jpa:
     show-sql: true
     generate-ddl: true
-    hibernate:
-      ddl-auto: create-drop
-      naming:
-        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
 alpha:
   cluster:
-    address: 127.0.0.1:8080
-    #address: alpha-server.servicecomb.io:8080
+    address: 172.168.4.188:8080
